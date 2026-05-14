@@ -4,8 +4,10 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class VerifyStringPoolInHeap {
+
 
     public static void main(String[] args) {
         // 方法1: 通过内存溢出验证

@@ -1,3 +1,5 @@
+package datastruct.SegmentTree;
+
 
 
 
@@ -7,7 +9,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class Main {
+public class 范围更新最大值范围添加 {
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private static StringTokenizer st;
     static private PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -16,12 +18,12 @@ public class Main {
     static int MAXN =(int) 1e6+3;
 
 
-   static int[] arr = new int[MAXN];
-   //static int[] sum  = new int[MAXN<<2];
-   static   long[] add = new long[MAXN<<2];
-   static long[] max = new long[MAXN<<2];
-   static long[]change = new long[MAXN<<2];
-   static boolean[] update = new boolean[MAXN<<2];
+    static int[] arr = new int[MAXN];
+    //static int[] sum  = new int[MAXN<<2];
+    static   long[] add = new long[MAXN<<2];
+    static long[] max = new long[MAXN<<2];
+    static long[]change = new long[MAXN<<2];
+    static boolean[] update = new boolean[MAXN<<2];
 
     public static void main(String[] args) {
         int  n = nextInt();
@@ -32,19 +34,19 @@ public class Main {
         build(1,n,1);
 
         while(m-->0){
-           int op = nextInt();
-           int l = nextInt();
-           int r = nextInt();
+            int op = nextInt();
+            int l = nextInt();
+            int r = nextInt();
 
-           if(op == 1){
-               long x = nextLong();
-              change(l,r,x,1,n,1);
-           }else if(op == 2){
-               int x = nextInt();
-               add(l,r,x,1,n,1);
-           }else{
-               pw.println(query(l,r,1,n,1));;
-           }
+            if(op == 1){
+                long x = nextLong();
+                change(l,r,x,1,n,1);
+            }else if(op == 2){
+                int x = nextInt();
+                add(l,r,x,1,n,1);
+            }else{
+                pw.println(query(l,r,1,n,1));;
+            }
 
         }
         pw.flush();
@@ -58,7 +60,7 @@ public class Main {
             add[i] += v;
         }
         max[i] += v;
-       // sum[i] += v;
+        // sum[i] += v;
     }
     public static void updateLazy(int i ,long v){
         add[i] = 0;
@@ -68,7 +70,7 @@ public class Main {
     }
     public static void up(int i){
         max[i] = Math.max(max[i<<1],max[i<<1|1] );
-      //  sum[i] = sum[i<<1] + sum[i<<1|1];
+        //  sum[i] = sum[i<<1] + sum[i<<1|1];
     }
     public static void down(int i){
         if(update[i]){
@@ -83,7 +85,7 @@ public class Main {
     public static void build(int l ,int r , int i){
         if(l == r){
             max[i] = arr[l];
-             //sum[i] = arr[l];
+            //sum[i] = arr[l];
         }else{
             int mid = (l+r)>>1;
             build(l,mid,i<<1);
